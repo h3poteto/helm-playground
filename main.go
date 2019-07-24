@@ -6,7 +6,7 @@ import (
 
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
-	"k8s.io/client-go/tools/clientcmd"
+	"k8s.io/helm/pkg/kube"
 )
 
 func main() {
@@ -19,25 +19,8 @@ func main() {
 	log.Print("echo")
 }
 
-func GetConfig(context string, kubeconfig string) clientcmd.ClientConfig {
-	rules := clientcmd.NewDefaultClientConfigLoadingRules()
-	rules.DefaultClientConfig = &clientcmd.DefaultClientConfig
-
-	overrides := &clientcmd.ConfigOverrides{ClusterDefaults: clientcmd.ClusterDefaults}
-
-	if context != "" {
-		overrides.CurrentContext = context
-	}
-
-	if kubeconfig != "" {
-		rules.ExplicitPath = kubeconfig
-	}
-
-	return clientcmd.NewNonInteractiveDeferredLoadingClientConfig(rules, overrides)
-}
-
 func configForContext(context string, kubeconfig string) (*rest.Config, error) {
-	config, err := GetConfig(context, kubeconfig).ClientConfig()
+	config, err := kube.GetConfig(context, kubeconfig).ClientConfig()
 	if err != nil {
 		return nil, fmt.Errorf("could not get Kubernetes config for context %q: %s", context, err)
 	}
