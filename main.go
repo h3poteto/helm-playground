@@ -2,21 +2,26 @@ package main
 
 import (
 	"fmt"
-	"log"
+	"os"
 
+	log "github.com/sirupsen/logrus"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
 	"k8s.io/helm/pkg/kube"
 )
 
 func main() {
-	// config, client, err := getKubeClient("", "$HOME/.kube/config-internal-stg")
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// log.Print(config)
-	// log.Print(client)
-	log.Print("echo")
+	kubeconfig := os.Getenv("KUBECONFIG")
+	if len(kubeconfig) == 0 {
+		kubeconfig = "~/.kube/config"
+	}
+
+	config, client, err := getKubeClient("", kubeconfig)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Info(config)
+	log.Info(client)
 }
 
 func configForContext(context string, kubeconfig string) (*rest.Config, error) {

@@ -14,3 +14,4 @@ import:
   version: kubernetes-1.15.0
 - package: k8s.io/helm
   version: 7ab62324eb0e4186d4865bfbd809fc319679a297
+- package: github.com/sirupsen/logrus
