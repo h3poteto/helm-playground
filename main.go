@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/h3poteto/helm/pkg/helm"
+	"github.com/h3poteto/helm/pkg/helm/portforwarder"
 	log "github.com/sirupsen/logrus"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
@@ -11,6 +13,14 @@ import (
 )
 
 func main() {
+	client, err := NewClient()
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Info(client)
+}
+
+func NewClient() (*helm.Client, error) {
 	kubeconfig := os.Getenv("KUBECONFIG")
 	if len(kubeconfig) == 0 {
 		kubeconfig = "~/.kube/config"
@@ -18,10 +28,15 @@ func main() {
 
 	config, client, err := getKubeClient("", kubeconfig)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
-	log.Info(config)
-	log.Info(client)
+	tillerTunnel, err := portforwarder.New("kube-system", client, config)
+	if err != nil {
+		return nil, err
+	}
+	tillerHost := fmt.Sprintf("127.0.0.1:%d", tillerTunnel.Local)
+	options := []helm.Option{helm.Host(tillerHost), helm.ConnectTimeout(300)}
+	return helm.NewClient(options...), nil
 }
 
 func configForContext(context string, kubeconfig string) (*rest.Config, error) {
