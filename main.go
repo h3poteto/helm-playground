@@ -18,8 +18,10 @@ func main() {
 	}
 	log.Infof("Target SHA1: %s", revision)
 
-	log.Infof("Target stack: %s", transformBranchName(branch))
-	client, err := deploy.New("", "")
+	stack := transformBranchName(branch)
+	log.Infof("Target stack name: %s", stack)
+
+	client, err := deploy.New(stack, revision, "", "")
 	if err != nil {
 		log.Fatal(err)
 	}

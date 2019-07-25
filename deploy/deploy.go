@@ -23,9 +23,11 @@ type Deploy struct {
 	DryRun      bool
 	kubeContext string
 	kubeConfig  string
+	StackName   string
+	Revision    string
 }
 
-func New(kubeContext, kubeConfig string) (*Deploy, error) {
+func New(stack, revision, kubeContext, kubeConfig string) (*Deploy, error) {
 	cli, err := NewClient(kubeContext, kubeConfig)
 	if err != nil {
 		return nil, err
@@ -35,6 +37,8 @@ func New(kubeContext, kubeConfig string) (*Deploy, error) {
 		kubeContext: kubeContext,
 		kubeConfig:  kubeConfig,
 		DryRun:      true,
+		StackName:   stack,
+		Revision:    revision,
 	}
 	return c, nil
 }
@@ -67,7 +71,7 @@ func (d *Deploy) NewRelease(chartPath string) (*release.Release, error) {
 		chartRequested,
 		namespace,
 		helm.ValueOverrides(values),
-		helm.ReleaseName("akira"),
+		helm.ReleaseName(d.StackName),
 		helm.InstallDryRun(d.DryRun),
 		helm.InstallReuseName(false),
 		helm.InstallDisableHooks(false),
@@ -93,7 +97,7 @@ func (d *Deploy) overrideValues() ([]byte, error) {
 		"ses_smtp_user":     os.Getenv("SES_SMTP_USER"),
 		"ses_smtp_password": os.Getenv("SES_SMTP_PASSWORD"),
 		"image": map[string]interface{}{
-			"tag": os.Getenv("IMAGE_TAG"),
+			"tag": d.Revision,
 		},
 	}
 
