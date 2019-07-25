@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	client, err := deploy.New()
+	client, err := deploy.New("", "")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -15,4 +15,9 @@ func main() {
 		log.Fatal(err)
 	}
 	log.Infof("helm version: %s", version)
+	res, err := client.NewRelease("../../lapras-inc/charts/scout")
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Info(res)
 }

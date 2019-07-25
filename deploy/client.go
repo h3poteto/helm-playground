@@ -11,13 +11,16 @@ import (
 	"k8s.io/helm/pkg/kube"
 )
 
-func NewClient() (*helm.Client, error) {
+func NewClient(kubeContext, kubeConfig string) (*helm.Client, error) {
 	kubeconfig := os.Getenv("KUBECONFIG")
+	if len(kubeConfig) > 0 {
+		kubeconfig = kubeConfig
+	}
 	if len(kubeconfig) == 0 {
 		kubeconfig = "~/.kube/config"
 	}
 
-	config, client, err := getKubeClient("", kubeconfig)
+	config, client, err := getKubeClient(kubeContext, kubeconfig)
 	if err != nil {
 		return nil, err
 	}
