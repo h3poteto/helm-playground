@@ -16,3 +16,7 @@ import:
   version: 8cacb2c35df1b78b0da439a8e3f639833c7f39f4
 - package: github.com/sirupsen/logrus
 - package: github.com/gosuri/uitable
+- package: github.com/google/go-github
+  subpackages:
+    - github
+- package: golang.org/x/oauth2

@@ -1,5 +1,5 @@
-hash: df5d57124d434797cbd2bd2ed5ebf670ba8fe444147cdc8b15e92789c9d74df5
-updated: 2019-07-25T14:27:13.721452275+09:00
+hash: d52827c89120888e13fa7b7ce7f6a6d4c1321496a7922e60ccb663ea6d6eba54
+updated: 2019-07-25T15:07:29.897128666+09:00
 imports:
 - name: github.com/Azure/go-ansiterm
   version: d6e3b3328b783f23731bc4d058875b0371ff8109
@@ -91,6 +91,14 @@ imports:
   - cmp/internal/flags
   - cmp/internal/function
   - cmp/internal/value
+- name: github.com/google/go-github
+  version: c756c329c19dbbadba0675b42af693093c3f2c45
+  subpackages:
+  - github
+- name: github.com/google/go-querystring
+  version: c8c88dbee036db4e4808d1f2ec8c2e15e11c3f80
+  subpackages:
+  - query
 - name: github.com/google/gofuzz
   version: 24818f796faf91cd76ec7bddd72458fbced7a6c1
 - name: github.com/google/uuid
@@ -186,8 +194,15 @@ imports:
 - name: golang.org/x/crypto
   version: e84da0312774c21d64ee2317962ef669b27ffb41
   subpackages:
+  - cast5
   - ed25519
   - ed25519/internal/edwards25519
+  - openpgp
+  - openpgp/armor
+  - openpgp/elgamal
+  - openpgp/errors
+  - openpgp/packet
+  - openpgp/s2k
   - pbkdf2
   - scrypt
   - ssh/terminal

@@ -20,6 +20,7 @@ import (
 
 type Deploy struct {
 	client      *helm.Client
+	DryRun      bool
 	kubeContext string
 	kubeConfig  string
 }
@@ -30,7 +31,10 @@ func New(kubeContext, kubeConfig string) (*Deploy, error) {
 		return nil, err
 	}
 	c := &Deploy{
-		client: cli,
+		client:      cli,
+		kubeContext: kubeContext,
+		kubeConfig:  kubeConfig,
+		DryRun:      true,
 	}
 	return c, nil
 }
@@ -64,7 +68,7 @@ func (d *Deploy) NewRelease(chartPath string) (*release.Release, error) {
 		namespace,
 		helm.ValueOverrides(values),
 		helm.ReleaseName("akira"),
-		helm.InstallDryRun(false),
+		helm.InstallDryRun(d.DryRun),
 		helm.InstallReuseName(false),
 		helm.InstallDisableHooks(false),
 		helm.InstallDisableCRDHook(false),
@@ -102,11 +106,13 @@ func (d *Deploy) PrintRelease(rel *release.Release) error {
 	}
 
 	fmt.Printf("NAME:    %s\n", rel.Name)
-	status, err := d.client.ReleaseStatus(rel.Name)
-	if err != nil {
-		return err
+	if !d.DryRun {
+		status, err := d.client.ReleaseStatus(rel.Name)
+		if err != nil {
+			return err
+		}
+		printStatus(os.Stdout, status)
 	}
-	printStatus(os.Stdout, status)
 	return nil
 }
 
