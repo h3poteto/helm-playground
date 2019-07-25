@@ -9,5 +9,9 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Info(client)
+	version, err := client.GetVersion()
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Infof("helm version: %s", version.Version.SemVer)
 }

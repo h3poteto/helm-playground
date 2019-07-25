@@ -1,5 +1,5 @@
-hash: f977e4d29b13f3e709fba1e4b886e28c4d1f2c50ae62db3bd746a33f27a69190
-updated: 2019-07-24T18:06:35.676926788+09:00
+hash: fd59ede315731d3593dcd4d32e480ed1c9dc0164108ccdae426d2862a4363120
+updated: 2019-07-25T11:48:06.820101723+09:00
 imports:
 - name: github.com/Azure/go-ansiterm
   version: d6e3b3328b783f23731bc4d058875b0371ff8109
@@ -8,7 +8,7 @@ imports:
 - name: github.com/BurntSushi/toml
   version: 3012a1dbe2e4bd1391d42b32f0577cb7bbc7f005
 - name: github.com/chai2010/gettext-go
-  version: c6fed771bfd517099caf0f7a961671fa8ed08723
+  version: bf70f2a70fb1b1f36d90d671a72795984eab0fcb
   subpackages:
   - gettext
   - gettext/mo
@@ -21,7 +21,7 @@ imports:
   subpackages:
   - spew
 - name: github.com/docker/distribution
-  version: edc3ab29cdff8694dd6feb85cfeb4b5f1b38ed9c
+  version: 1fb7fffdb26687adf375a4433a58a0d66a13fede
   subpackages:
   - digestset
   - reference
@@ -103,11 +103,6 @@ imports:
   version: 787624de3eb7bd915c329cba748687a3b22666a6
   subpackages:
   - diskcache
-- name: github.com/h3poteto/helm
-  version: 7ab62324eb0e4186d4865bfbd809fc319679a297
-  subpackages:
-  - pkg/helm
-  - pkg/helm/portforwarder
 - name: github.com/hashicorp/golang-lru
   version: 20f1fb78b0740ba8c3cb143a61e86ba5c8669768
   subpackages:
@@ -125,7 +120,7 @@ imports:
 - name: github.com/json-iterator/go
   version: ab8a2e0c74be9d3be70b3184d9acc634935ded82
 - name: github.com/konsorten/go-windows-terminal-sequences
-  version: 5c8c8bd35d3832f5d134ae1e1e375b69a4d25242
+  version: f55edac94c9bbba5d6182a4be46d86a2c9b5b50e
 - name: github.com/lib/pq
   version: 3427c32cb71afc948325f299f040e53c1dd78979
   subpackages:
@@ -140,7 +135,7 @@ imports:
   - jlexer
   - jwriter
 - name: github.com/MakeNowJust/heredoc
-  version: bb23615498cded5e105af4ce27de75b089cbe851
+  version: e9091a26100e9cfb2b6a8f470085bfa541931a91
 - name: github.com/Masterminds/goutils
   version: 41ac8693c5c10a92ea1ff5ac3a7f95646f6123b0
 - name: github.com/Masterminds/semver
@@ -148,13 +143,13 @@ imports:
 - name: github.com/Masterminds/sprig
   version: 258b00ffa7318e8b109a141349980ffbd30a35db
 - name: github.com/mitchellh/go-wordwrap
-  version: ad45545899c7b13c020ea92b2072220eefad42b8
+  version: 9e67c67572bc5dd02aef930e2b0ae3c02a4b5a5c
 - name: github.com/modern-go/concurrent
   version: bacd9c7ef1dd9b15be4a9909b8ac7a4e313eec94
 - name: github.com/modern-go/reflect2
   version: 94122c33edd36123c84d5368cfb2b69df93a0ec8
 - name: github.com/opencontainers/go-digest
-  version: a6d0ee40d4207ea02364bd3b9e8e77b9159ba1eb
+  version: ac19fd6e7483ff933754af248d80be865e543d22
 - name: github.com/peterbourgon/diskv
   version: 5f041e8faa004a95c88a202771f4cc3e991971e6
 - name: github.com/pkg/errors
@@ -168,9 +163,7 @@ imports:
   subpackages:
   - sqlparse
 - name: github.com/russross/blackfriday
-  version: 300106c228d52c8941d4b3de6054a6062a86dda3
-- name: github.com/shurcooL/sanitized_anchor_name
-  version: 10ef21a441db47d8b13ebcc5fd2310f636973c77
+  version: a925a152c144ea7de0f451eaf2f7db9e52fa005a
 - name: github.com/sirupsen/logrus
   version: bcd833dfe83d3cebad139e4a29ed79cb2318bf95
 - name: github.com/spf13/cobra
@@ -583,10 +576,12 @@ imports:
   subpackages:
   - featuregate
 - name: k8s.io/helm
-  version: 7ab62324eb0e4186d4865bfbd809fc319679a297
+  version: 8cacb2c35df1b78b0da439a8e3f639833c7f39f4
   subpackages:
   - pkg/chartutil
   - pkg/engine
+  - pkg/helm
+  - pkg/helm/portforwarder
   - pkg/ignore
   - pkg/kube
   - pkg/manifest
@@ -750,7 +745,7 @@ imports:
 - name: sigs.k8s.io/yaml
   version: fd68e9863619f6ec2fdd8625fe1f02e7c877e480
 - name: vbom.ml/util
-  version: db5cfe13f5cc80a4990d98e2e1b0707a4d1a5394
+  version: efcd4e0f97874370259c7d93e12aad57911dea81
   subpackages:
   - sortorder
 testImports: []

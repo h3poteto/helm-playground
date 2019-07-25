@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/h3poteto/helm/pkg/helm"
-	"github.com/h3poteto/helm/pkg/helm/portforwarder"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
+	"k8s.io/helm/pkg/helm"
+	"k8s.io/helm/pkg/helm/portforwarder"
 	"k8s.io/helm/pkg/kube"
 )
 

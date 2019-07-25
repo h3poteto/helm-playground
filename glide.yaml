@@ -13,5 +13,5 @@ import:
 - package: k8s.io/apiextensions-apiserver
   version: kubernetes-1.15.0
 - package: k8s.io/helm
-  version: 7ab62324eb0e4186d4865bfbd809fc319679a297
+  version: 8cacb2c35df1b78b0da439a8e3f639833c7f39f4
 - package: github.com/sirupsen/logrus
