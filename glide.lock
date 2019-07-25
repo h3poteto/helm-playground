@@ -1,5 +1,5 @@
-hash: fd59ede315731d3593dcd4d32e480ed1c9dc0164108ccdae426d2862a4363120
-updated: 2019-07-25T11:48:06.820101723+09:00
+hash: df5d57124d434797cbd2bd2ed5ebf670ba8fe444147cdc8b15e92789c9d74df5
+updated: 2019-07-25T14:27:13.721452275+09:00
 imports:
 - name: github.com/Azure/go-ansiterm
   version: d6e3b3328b783f23731bc4d058875b0371ff8109
@@ -42,6 +42,8 @@ imports:
   version: 5858425f75500d40c52783dce87d085a483ce135
 - name: github.com/exponent-io/jsonpath
   version: d6023ce2651d8eafb5c75bb0c7167536102ec9f5
+- name: github.com/fatih/color
+  version: 3f9d52f7176a6927daacff70a3e8d1dc2025c53e
 - name: github.com/ghodss/yaml
   version: c7ce16629ff4cd059ed96ed06419dd3856fd3577
 - name: github.com/go-openapi/jsonpointer
@@ -99,6 +101,11 @@ imports:
   - OpenAPIv2
   - compiler
   - extensions
+- name: github.com/gosuri/uitable
+  version: 2cf933346b8370a3a3d8867ef5cf54b2129d8ecf
+  subpackages:
+  - util/strutil
+  - util/wordwrap
 - name: github.com/gregjones/httpcache
   version: 787624de3eb7bd915c329cba748687a3b22666a6
   subpackages:
@@ -142,6 +149,12 @@ imports:
   version: c7af12943936e8c39859482e61f0574c2fd7fc75
 - name: github.com/Masterminds/sprig
   version: 258b00ffa7318e8b109a141349980ffbd30a35db
+- name: github.com/mattn/go-colorable
+  version: c52ace132bf44798a21f16fdafaaafbf329519e2
+- name: github.com/mattn/go-isatty
+  version: da60ac76bf7019a8b005f8dd1ad9d1a0e6434155
+- name: github.com/mattn/go-runewidth
+  version: 703b5e6b11ae25aeb2af9ebb5d5fdf8fa2575211
 - name: github.com/mitchellh/go-wordwrap
   version: 9e67c67572bc5dd02aef930e2b0ae3c02a4b5a5c
 - name: github.com/modern-go/concurrent
@@ -596,6 +609,7 @@ imports:
   - pkg/storage/errors
   - pkg/sympath
   - pkg/tiller/environment
+  - pkg/timeconv
   - pkg/version
 - name: k8s.io/klog
   version: 89e63fd5117f8c20208186ef85f096703a280c20

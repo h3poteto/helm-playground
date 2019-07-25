@@ -15,3 +15,4 @@ import:
 - package: k8s.io/helm
   version: 8cacb2c35df1b78b0da439a8e3f639833c7f39f4
 - package: github.com/sirupsen/logrus
+- package: github.com/gosuri/uitable
