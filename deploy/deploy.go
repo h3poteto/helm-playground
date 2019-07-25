@@ -74,7 +74,11 @@ func (d *Deploy) NewRelease(chartPath string) (*release.Release, error) {
 }
 
 func (d *Deploy) overrideValues() ([]byte, error) {
-	base := map[string]interface{}{}
+	base := map[string]interface{}{
+		"namespace":         "yadockeri-akira",
+		"ses_smtp_user":     "sample_user",
+		"ses_smtp_password": "sample_password",
+	}
 
 	return yaml.Marshal(base)
 }
